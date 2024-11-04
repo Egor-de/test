@@ -1,4 +1,4 @@
-package proj;
+package com.javarush.Novikov.cryptoanalyzer;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -109,6 +109,7 @@ public class Main {
                 count_file_shifr += 1;
             }
             Files.createFile(Path.of("Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt"));
+            System.out.println("Путь к файлу:" + System.getProperty("user.dir") + r + "Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt");
             FileOutputStream outputStream = new FileOutputStream("Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt");
             for (int i = 0; i < res.length; i++) {
                 byte[] buffer = (res[i] + '\n').getBytes();
@@ -123,6 +124,7 @@ public class Main {
                 count_file_Rasshifr += 1;
             }
             Files.createFile(Path.of("Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt"));
+            System.out.println("Путь к файлу:" + System.getProperty("user.dir") + r + "Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt");
             FileOutputStream outputStream = new FileOutputStream("Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt");
             for (int i = 0; i < res.length; i++) {
                 byte[] buffer = (res[i] + '\n').getBytes();
@@ -185,6 +187,7 @@ public class Main {
                 }
             }
         }
+        System.out.println("Путь к папке:" + System.getProperty("user.dir") + String.valueOf('\\') + "Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif));
         return list;
     }
 }
