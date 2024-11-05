@@ -14,6 +14,7 @@ public class Main {
     public static int count_file_Rasshifr = 0;
     public static int count_file_Brute_force_rasshif = 0;
     public static int count_dir_Brute_force_rasshif = 0;
+    public static String u = "";
 
 
     public static void main(String[] args) throws IOException {
@@ -105,12 +106,11 @@ public class Main {
         if (a == 1) {
             count_file_shifr = 0;
             String r = String.valueOf('\\');
-            while (Files.exists(Path.of("Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt"))) {
+            while (Files.exists(Path.of(u + r + "Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt"))) {
                 count_file_shifr += 1;
             }
-            Files.createFile(Path.of("Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt"));
-            System.out.println("Путь к файлу:" + System.getProperty("user.dir") + r + "Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt");
-            FileOutputStream outputStream = new FileOutputStream("Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt");
+            Files.createFile(Path.of(u + r + "Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt"));
+            FileOutputStream outputStream = new FileOutputStream(u + r + "Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt");
             for (int i = 0; i < res.length; i++) {
                 byte[] buffer = (res[i] + '\n').getBytes();
                 outputStream.write(buffer);
@@ -120,12 +120,11 @@ public class Main {
         else if (a == 2){
             count_file_Rasshifr = 0;
             String r = String.valueOf('\\');
-            while (Files.exists(Path.of("Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt"))) {
+            while (Files.exists(Path.of(u + r + "Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt"))) {
                 count_file_Rasshifr += 1;
             }
-            Files.createFile(Path.of("Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt"));
-            System.out.println("Путь к файлу:" + System.getProperty("user.dir") + r + "Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt");
-            FileOutputStream outputStream = new FileOutputStream("Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt");
+            Files.createFile(Path.of(u + r + "Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt"));
+            FileOutputStream outputStream = new FileOutputStream(u + r + "Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt");
             for (int i = 0; i < res.length; i++) {
                 byte[] buffer = (res[i] + '\n').getBytes();
                 outputStream.write(buffer);
@@ -135,11 +134,11 @@ public class Main {
         else{
             count_file_Brute_force_rasshif = 0;
             String r = String.valueOf('\\');
-            while (Files.exists(Path.of("Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif) + r + "res_" + String.valueOf(count_file_Brute_force_rasshif) + ".txt"))) {
+            while (Files.exists(Path.of(u + r + "Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif) + r + "res_" + String.valueOf(count_file_Brute_force_rasshif) + ".txt"))) {
                 count_file_Brute_force_rasshif += 1;
             }
-            Files.createFile(Path.of("Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif) + r + "res_" + String.valueOf(count_file_Brute_force_rasshif) + ".txt"));
-            FileOutputStream outputStream = new FileOutputStream("Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif) + r + "res_" + String.valueOf(count_file_Brute_force_rasshif) + ".txt");
+            Files.createFile(Path.of(u + r + "Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif) + r + "res_" + String.valueOf(count_file_Brute_force_rasshif) + ".txt"));
+            FileOutputStream outputStream = new FileOutputStream(u + r + "Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif) + r + "res_" + String.valueOf(count_file_Brute_force_rasshif) + ".txt");
             for (int i = 0; i < res.length; i++) {
                 byte[] buffer = (res[i] + '\n').getBytes();
                 outputStream.write(buffer);
@@ -154,39 +153,47 @@ public class Main {
         String s = "c:";
         List<String> list = new ArrayList<String>();
         Path path = of(s);
+        String r = String.valueOf('\\');
         while (true) {
             try {
                 str = new Scanner(System.in);
                 s = str.nextLine();
                 path = of(s);
                 list = Files.readAllLines(path);
-
                 break;
             } catch (Exception e) {
                 System.out.println("Файла с таким названием в этом месте нет, выберите другой путь");
             }
         }
         if (a == 1){
-            if (!Files.exists(Path.of("Shifr"))) {
-                Files.createDirectory(Path.of("Shifr"));
+            System.out.println("Введите место, куда бы вы хотели сохранить файл(без названия итого файла)");
+            str = new Scanner(System.in);
+            u = str.nextLine();
+            if (!Files.exists(Path.of(u + r + "Shifr"))) {
+                Files.createDirectory(Path.of(u + r + "Shifr"));
             }
         }
         else if (a == 2){
-            if (!Files.exists(Path.of("Rasshifr"))) {
-                Files.createDirectory(Path.of("Rasshifr"));
+            System.out.println("Введите место, куда бы вы хотели сохранить файл(без названия итого файла)");
+            str = new Scanner(System.in);
+            u = str.nextLine();
+            if (!Files.exists(Path.of(u + r + "Rasshifr"))) {
+                Files.createDirectory(Path.of(u + r + "Rasshifr"));
             }
         }
         else{
+            System.out.println("Введите место, куда бы вы хотели сохранить файл(без названия итого файла)");
+            str = new Scanner(System.in);
+            u = str.nextLine();
             while (true) {
-                if (Files.exists(Path.of("Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif)))){
+                if (Files.exists(Path.of(u + r + "Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif)))){
                     count_dir_Brute_force_rasshif += 1;
                 }
                 else{
-                    Files.createDirectory(of("Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif)));
+                    Files.createDirectory(of(u + r +"Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif)));
                     break;
                 }
             }
-            System.out.println("Путь к папке:" + System.getProperty("user.dir") + String.valueOf('\\') + "Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif));
         }
         return list;
     }
