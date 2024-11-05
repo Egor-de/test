@@ -186,8 +186,8 @@ public class Main {
                     break;
                 }
             }
+            System.out.println("Путь к папке:" + System.getProperty("user.dir") + String.valueOf('\\') + "Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif));
         }
-        System.out.println("Путь к папке:" + System.getProperty("user.dir") + String.valueOf('\\') + "Brute_force_rasshif_" + String.valueOf(count_dir_Brute_force_rasshif));
         return list;
     }
 }
